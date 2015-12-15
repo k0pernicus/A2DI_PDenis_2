@@ -5,8 +5,8 @@
 d1 : Romeo and Juliet
 d2 : Juliet: O happy dagger
 d3 : Romeo died by dagger
-d4 : Live free or die, that's the New-Hampsphère motto"
-d5 : Did you know, New-Hampsphère is in New England
+d4 : Live free or die, that's the New-Hampsphire motto"
+d5 : Did you know, New-Hampsphire is in New England
 
 q  : dies dagger
 
