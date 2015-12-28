@@ -71,6 +71,17 @@ def get_order(docs, q):
 
     return map(lambda couple: couple[0], sorted(res.items(), key=lambda couple: couple[1], reverse=True))
 
+def get_reduced_elements(docs, q, k=2):
+    U, sigma, V = np.linalg.svd(docs, full_matrices=False)
+    U_k = U[:, :k]
+    sigma_k = np.fill_diagonal(np.zeros((k, k)), sigma[:k])
+    sigma_k = np.diag(sigma[:k])
+    V_k = V[:k, :]
+    docs_k = np.dot(sigma_k, V_k)
+    q_k = np.dot(np.linalg.inv(sigma_k), np.dot(U_k.T, q))
+
+    return (q_k, docs_k)
+
 def main():
     q, docs = create_doc_matrix(parse_doc("data/documents.txt"), query)
 
