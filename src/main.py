@@ -85,8 +85,29 @@ def get_reduced_elements(docs, q, k=2):
 def main():
     q, docs = create_doc_matrix(parse_doc("data/documents.txt"), query)
 
-    for doc in docs.T:
-        print("cos_distance : {0}".format(get_cos_distance(doc, q)))
+    print("===== AVANT LA SVD =====")
+    print("\n")
+    print("Documents et leurs distance à la requête :")
+
+    for i, doc in enumerate(docs.T):
+        print("d" + str(i + 1) + " : {0}".format(get_cos_distance(doc, q)))
+
+    print("\n")
+    print("Les documents sont donc dans l'ordre suivant : {0}".format(get_order(docs, q)))
+    print("\n")
+
+    q_k, docs_k = get_reduced_elements(docs, q)
+
+    print("===== APRÈS LA SVD =====")
+    print("\n")
+    print("Documents et leurs distance à la requête :")
+
+    for i, doc in enumerate(docs_k.T):
+        print("d" + str(i + 1) + " : {0}".format(get_cos_distance(doc, q_k)))
+
+    print("\n")
+    print("Les documents sont donc dans l'ordre suivant : {0}".format(get_order(docs_k, q_k)))
+    print("\n")
 
 if __name__ == '__main__':
     main()
