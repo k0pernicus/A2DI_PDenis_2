@@ -86,6 +86,21 @@ def get_reduced_elements(docs, q, k=2):
 
     return (q_k, docs_k)
 
+def plot_2D_data(docs, q):
+    """
+    Plotte les données réduites.
+    """
+
+    colors = ["red", "green", "blue", "grey", "orange"]
+
+    for i, doc in enumerate(docs.T):
+        plt.scatter(doc[0], doc[1], color=colors[i], label="d" + str(i + 1))
+
+    plt.scatter(q[0], q[1], color="black", label="query")
+
+    plt.legend(loc=2)
+    plt.show()
+
 def main():
     q, docs = create_doc_matrix(parse_doc("data/documents.txt"), query)
 
@@ -112,6 +127,8 @@ def main():
     print("\n")
     print("Les documents sont donc dans l'ordre suivant : {0}".format(get_order(docs_k, q_k)))
     print("\n")
+
+    plot_2D_data(docs_k, q_k)
 
 if __name__ == '__main__':
     main()
