@@ -72,6 +72,10 @@ def get_order(docs, q):
     return map(lambda couple: couple[0], sorted(res.items(), key=lambda couple: couple[1], reverse=True))
 
 def get_reduced_elements(docs, q, k=2):
+    """
+    Réduit la matrice des documents.
+    """
+
     U, sigma, V = np.linalg.svd(docs, full_matrices=False)
     U_k = U[:, :k]
     sigma_k = np.fill_diagonal(np.zeros((k, k)), sigma[:k])
