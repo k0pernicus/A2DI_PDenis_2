@@ -53,7 +53,6 @@ def create_doc_matrix(docs_list, query):
     return query_vector, res
 
 def get_cos_distance(doc, q):
-    print(doc)
     return np.dot(doc, q) / (np.linalg.norm(doc, 2) * np.linalg.norm(q, 2))
 
 def main():
