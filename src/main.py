@@ -94,11 +94,14 @@ def plot_2D_data(docs, q):
     colors = ["red", "green", "blue", "grey", "orange"]
 
     for i, doc in enumerate(docs.T):
-        plt.scatter(doc[0], doc[1], color=colors[i], label="d" + str(i + 1))
+        arr = plt.arrow(0, 0, doc[0], doc[1], head_width=0.05, head_length=0.1, color=colors[i], label="d" + str(i + 1))
+        plt.gca().add_patch(arr)
 
-    plt.scatter(q[0], q[1], color="black", label="query")
+    arr = plt.arrow(0, 0, q[0], q[1], head_width=0.05, head_length=0.1, color="black", label="query")
+    plt.gca().add_patch(arr)
 
     plt.legend(loc=2)
+    plt.axis([-0.5, 2.5, -2.5, 2.5])
     plt.show()
 
 def main():
